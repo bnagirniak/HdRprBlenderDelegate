@@ -23,6 +23,7 @@ bl_info = {
 if "bpy" in locals():
     import importlib
     importlib.reload(engine)
+    importlib.reload(properties)
     importlib.reload(ui)
 
 else:
