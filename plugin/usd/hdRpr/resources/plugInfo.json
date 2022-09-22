@@ -1,0 +1,31 @@
+{
+    "Plugins": [
+        {
+            "Info": {
+                "Types": {
+                    "HdRprPlugin": {
+                        "bases": [
+                            "HdRendererPlugin"
+                        ],
+                        "displayName": "RPR",
+                        "priority": 99
+                    },
+                    "HdRprNdrDiscoveryPlugin": {
+                        "bases": ["NdrDiscoveryPlugin"],
+                        "displayName": "RPR Node Discovery"
+                    },
+                    "HdRprNdrParserPlugin": {
+                        "bases": ["NdrParserPlugin"],
+                        "displayName": "RPR Node Parser"
+                    }
+                }
+            },
+            "LibraryPath": "../hdRpr.dll",
+            "Name": "hdRpr",
+            "ResourcePath": "resources",
+            "Root": "..",
+            "Type": "library"
+        }
+    ]
+}
+
