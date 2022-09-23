@@ -68,14 +68,28 @@ register_properties, unregister_properties = register_classes_factory(
 
 
 def register():
-    engine.register()
-    register_class(engine.USDHydraHdRprEngine)
-    register_properties()
-    register_ui()
+    import addon_utils
+    enabled, loaded = addon_utils.check('usdhydra')
+    if enabled and loaded:
+        register_class(engine.USDHydraHdRprEngine)
+        register_properties()
+        register_ui()
+        engine.register()
+
+    else:
+        addon_utils.disable(engine.USDHydraHdRprEngine.bl_idname)
 
 
 def unregister():
-    unregister_class(engine.USDHydraHdRprEngine)
-    unregister_ui()
-    unregister_properties()
-    engine.unregister()
+    try:
+        unregister_class(engine.USDHydraHdRprEngine)
+        print("Unregister 1")
+        unregister_ui()
+        print("Unregister 2")
+        unregister_properties()
+        print("Unregister 3")
+        engine.unregister()
+        print("Unregister 4")
+
+    except:
+        print("Unregister try")
