@@ -81,7 +81,7 @@ def unregister():
         unregister_properties()
         engine.unregister()
     except Exception as err:
-        from usdhydra import utils
-        log = utils.loggin.Log("HdRprBlenderDelegate")
+        from usdhydra.utils import logging
+        log = logging.Log("HdRprBlenderDelegate")
         log.warn("Delegate  Unregistering", err)
 
