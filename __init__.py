@@ -1,8 +1,3 @@
-# SPDX-License-Identifier: Apache-2.0
-# Copyright 2011-2022 Blender Foundation
-
-# <pep8 compliant>
-
 bl_info = {
     "name": "USD Hydra HdRpr",
     "author": "AMD",
@@ -32,7 +27,6 @@ else:
         properties,
         ui,
     )
-
 
 from bpy.utils import register_class, unregister_class, register_classes_factory
 
@@ -83,13 +77,11 @@ def register():
 def unregister():
     try:
         unregister_class(engine.USDHydraHdRprEngine)
-        print("Unregister 1")
         unregister_ui()
-        print("Unregister 2")
         unregister_properties()
-        print("Unregister 3")
         engine.unregister()
-        print("Unregister 4")
+    except Exception as err:
+        from usdhydra import utils
+        log = utils.loggin.Log("HdRprBlenderDelegate")
+        log.warn("Delegate  Unregistering", err)
 
-    except:
-        print("Unregister try")

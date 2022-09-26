@@ -9,6 +9,7 @@ from usdhydra.utils import register_delegate, unregister_delegate
 def register():
     register_delegate(Path(__file__).parent, USDHydraHdRprEngine.bl_idname)
 
+
 def unregister():
     unregister_delegate(USDHydraHdRprEngine.bl_idname)
 
@@ -78,11 +79,11 @@ class USDHydraHdRprEngine(USDHydraEngine):
             ('rpr:denoising:iterStep', denoise.iter_step),
         )
 
-        # if hdrpr.render_quality == 'Northstar':
-        #     settings += (('rpr:quality:imageFilterRadius', hdrpr.quality.pixel_filter_width),)
+        if hdrpr.render_quality == 'Northstar':
+            settings += (('rpr:quality:imageFilterRadius', hdrpr.quality.pixel_filter_width),)
 
-        # return hdrpr.render_quality
         return settings
+
 
     def sync_viewport_delegate_settings(self):
         hdrpr = bpy.context.scene.hdrpr.viewport
@@ -108,7 +109,6 @@ class USDHydraHdRprEngine(USDHydraEngine):
         # if hdrpr.render_quality == 'Northstar':
         #     settings['rpr:quality:imageFilterRadius'] = hdrpr.quality.pixel_filter_width
 
-
         settings = (
             ('rpr:alpha:enable', False),
             ('rpr:core:renderQuality', hdrpr.render_quality),
@@ -125,9 +125,7 @@ class USDHydraHdRprEngine(USDHydraEngine):
             ('rpr:denoising:iterStep', denoise.iter_step),
         )
 
-        # if hdrpr.render_quality == 'Northstar':
-        #     settings += (('rpr:quality:imageFilterRadius', hdrpr.quality.pixel_filter_width),)
+        if hdrpr.render_quality == 'Northstar':
+            settings += (('rpr:quality:imageFilterRadius', hdrpr.quality.pixel_filter_width),)
 
-        # return hdrpr.render_quality
         return settings
-
