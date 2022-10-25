@@ -326,6 +326,11 @@ class "RprRendererSettingsAPI" (
         displayGroup = "General"
         displayName = "Use Uniform Seed"
     )
+    uniform double stageMetersPerUnit = 1 (
+        displayGroup = "General"
+        displayName = "Meters Per Unit"
+        doc = "Scene unit size in meters"
+    )
 }
 
 class "RprObjectSettingsAPI"
